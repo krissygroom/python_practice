@@ -37,6 +37,12 @@ def extract_call_numbers(call_list):
 # this is how to get the key with the maximum value from the dictionary: max(dict, key=dict.get)
 # create a function to do this:
 def phone_durations(num_list):
+    """Function that holds all the unique phone numbers and tallies the seconds
+    Args:
+        call_list: list of telephone call observations
+    Returns:
+        a dictionary of telephone numbers as key and aggregated seconds of the call as the value
+    """
     # create empty dictionary
     num_dict = {}
     # iterate through the number list and the seconds and add each phone number with the amount of seconds
@@ -53,6 +59,12 @@ def phone_durations(num_list):
 
 
 def find_max_call(all_calls):
+    """Function that holds all the unique phone numbers and tallies the seconds
+    Args:
+        call_list: list of telephone call observations
+    Returns:
+        a dictionary of telephone numbers as key and aggregated seconds of the call as the value
+    """
     call_list = extract_call_numbers(all_calls)
     durations_dict = phone_durations(call_list)
     max_number = max(durations_dict, key=durations_dict.get)

@@ -3,6 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+import re
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -43,3 +44,18 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+"""Task 3, Part A"""
+
+def find_bangalore(call_list):
+    """"""
+
+def test_cases():
+    practice_texts = [['(801) 375', '22222 1234', '01-09-2016 06:03:22'],
+                      ['(801) 375', '4455 5678', '01-09-2016 06:05:35'],
+                      ['1234', '9999', '01-09-2016 06:05:35']]
+
+    practice_calls = [['(801) 375', '(909) 3333', '01-09-2016 06:01:12', '186'],
+                      ['3333', '1234', '01-09-2016 06:01:59', '2093'],
+                      ['9999', '1010', '01-09-2016 06:03:51', '1975']]
+
