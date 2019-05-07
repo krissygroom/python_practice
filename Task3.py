@@ -3,7 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
-import re
+import numpy as np
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -45,17 +45,84 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-"""Task 3, Part A"""
 
-def find_bangalore(call_list):
-    """"""
+def find_bangalore_calls_list(call_list):
+    """Function finds all the area codes from bangalore (080) callers as a list
+    Args:
+        call_list: list of all telephone call observations
+    Returns:
+        list of all area codes of receivers of bangalore calls
+    """
+    bangalore_calls = []
+    for i in range(len(call_list)):
+        # check if first phone number is from bangalore:
+        if call_list[i][0][:5] == '(080)':
+            # if yes, add receiver to the list
+            # first split and add the first part
+            if call_list[i][1][0] == '(':
+                # add it to the list
+                area_code = call_list[i][1].strip('(').split(')')
+            elif call_list[i][1][:3] == '140':
+                bangalore_calls.append('140')
+            else:
+                area_code = call_list[i][1].split(' ')
+            bangalore_calls.append(area_code[0])
 
-def test_cases():
-    practice_texts = [['(801) 375', '22222 1234', '01-09-2016 06:03:22'],
-                      ['(801) 375', '4455 5678', '01-09-2016 06:05:35'],
-                      ['1234', '9999', '01-09-2016 06:05:35']]
+    return bangalore_calls
 
-    practice_calls = [['(801) 375', '(909) 3333', '01-09-2016 06:01:12', '186'],
-                      ['3333', '1234', '01-09-2016 06:01:59', '2093'],
-                      ['9999', '1010', '01-09-2016 06:03:51', '1975']]
+
+def find_bangalore_calls_unique(call_list):
+    """Function that returns the percentage of calls received from bangalore that are also from bangalore
+    Args:
+        call_list: list of all bangalore calls observations
+    Returns:
+        list of unique numbers who received calls from bangalore in lexicographic order
+        """
+    bangalore_set = set(find_bangalore_calls_list(call_list))
+    return list(sorted(bangalore_set))
+
+
+def percent_called(call_list):
+    """Function that returns the percentage of calls received from bangalore that are also from bangalore
+    Args:
+        call_list: list of all telephone call observations
+    Returns:
+        the percentage of callers that were from bangalore that were all received by bangalore numbers
+        """
+    # get all bangalore calls
+    lst = find_bangalore_calls_list(call_list)
+    # create numpy array for easy calculation
+    lst = np.array(lst)
+    num_calls = len(lst)
+    # print(num_calls)
+    bangalore_calls = (lst == '080').sum()
+    # print(bangalore_calls)
+    return round((bangalore_calls / num_calls) * 100.0, 2)
+
+
+def print_calls(call_list):
+    """Function that prints out each item in the call_list"""
+    for i in call_list:
+        print(i)
+
+
+"""Task 3, Part A answer"""
+
+unique_calls = find_bangalore_calls_unique(calls)
+
+print("The numbers called by people in Bangalore have codes:")
+print_calls(unique_calls)
+
+"""Task 3, Part B answer"""
+
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percent_called(calls)))
+
+
+
+
+
+
+
+
+
 

@@ -24,9 +24,9 @@ September 2016.".
 def extract_call_numbers(call_list):
     """Extracts the numbers and seconds from the call list
     Args:
-        call_list: a list of tuples of phone number and seconds
+        call_list: full list of calls
     Returns:
-        a new list of only phone numbers
+        a new list of individual phone numbers with seconds
     """
     call_ex1 = [(call[0], call[3]) for call in call_list]
     call_ex2 = [(call[1], call[3]) for call in call_list]
@@ -37,9 +37,9 @@ def extract_call_numbers(call_list):
 # this is how to get the key with the maximum value from the dictionary: max(dict, key=dict.get)
 # create a function to do this:
 def phone_durations(num_list):
-    """Function that holds all the unique phone numbers and tallies the seconds
+    """Function creates dictionary that holds all the unique phone numbers and tallies the seconds
     Args:
-        call_list: list of telephone call observations
+        num_list: list of telephone call observations
     Returns:
         a dictionary of telephone numbers as key and aggregated seconds of the call as the value
     """
@@ -59,11 +59,11 @@ def phone_durations(num_list):
 
 
 def find_max_call(all_calls):
-    """Function that holds all the unique phone numbers and tallies the seconds
+    """Function that calculates the maximum seconds from the calls dictionary
     Args:
-        call_list: list of telephone call observations
+        all_calls: list of telephone call observations
     Returns:
-        a dictionary of telephone numbers as key and aggregated seconds of the call as the value
+        the maximum number of seconds (int) and the phone number that made the longest call (str)
     """
     call_list = extract_call_numbers(all_calls)
     durations_dict = phone_durations(call_list)
