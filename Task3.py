@@ -47,13 +47,15 @@ The percentage should have 2 decimal digits
 
 
 def find_bangalore_calls_list(call_list):
-    """Function finds all the area codes from bangalore (080) callers as a list
+    """Function that finds all the area codes from bangalore (080) callers as a list
     Args:
         call_list: list of all telephone call observations
     Returns:
         list of all area codes of receivers of bangalore calls
     """
+    # empty list to hold all calls from bangalore
     bangalore_calls = []
+
     for i in range(len(call_list)):
         # check if first phone number is from bangalore:
         if call_list[i][0][:5] == '(080)':
@@ -62,19 +64,20 @@ def find_bangalore_calls_list(call_list):
             if call_list[i][1][0] == '(':
                 # add it to the list
                 area_code = call_list[i][1].strip('(').split(')')
+                bangalore_calls.append(area_code[0])
             elif call_list[i][1][:3] == '140':
                 bangalore_calls.append('140')
             else:
                 area_code = call_list[i][1].split(' ')
-            bangalore_calls.append(area_code[0])
+                bangalore_calls.append(area_code[0])
 
     return bangalore_calls
 
 
 def find_bangalore_calls_unique(call_list):
-    """Function that returns the percentage of calls received from bangalore that are also from bangalore
+    """Function that returns a sorted list of only the unique phone numbers who received calls from bangalore
     Args:
-        call_list: list of all bangalore calls observations
+        call_list: list of all bangalore calls
     Returns:
         list of unique numbers who received calls from bangalore in lexicographic order
         """
@@ -87,7 +90,7 @@ def percent_called(call_list):
     Args:
         call_list: list of all telephone call observations
     Returns:
-        the percentage of callers that were from bangalore that were all received by bangalore numbers
+        the percentage of callers that were from bangalore that received a call from a bangalore number
         """
     # get all bangalore calls
     lst = find_bangalore_calls_list(call_list)
@@ -101,7 +104,7 @@ def percent_called(call_list):
 
 
 def print_calls(call_list):
-    """Function that prints out each item in the call_list"""
+    """Function that prints out each item in a call_list"""
     for i in call_list:
         print(i)
 
