@@ -32,11 +32,9 @@ def create_non_marketer_list(call_list, text_list):
     no_marketer_texts = extract_numbers(text_list)
     # get unique values
     no_marketer_texts = list(set(no_marketer_texts))
-    print(no_marketer_texts)
 
     # get 2nd number from calls list - receiver number
     no_marketer_calls = get_receiver_num(call_list)
-    print(no_marketer_calls)
 
     # combine lists
     no_marketers = no_marketer_texts + no_marketer_calls
@@ -50,23 +48,36 @@ def get_receiver_num(call_list):
     return list(set(new_list))
 
 
-def test_cases():
-    practice_texts = [['4545', '1234', '01-09-2016 06:03:22'],
-                      ['4545', '5678', '01-09-2016 06:05:35'],
-                      ['1234', '9999', '01-09-2016 06:05:35'],
-                      ['1234', '9999', '01-09-2016 06:05:35'],
-                      ['1234', '9999', '01-09-2016 06:05:35'],
-                      ['1234', '9999', '01-09-2016 06:05:35']]
+def find_marketers(call_list, text_list):
+    non_marketers = create_non_marketer_list(call_list, text_list)
 
-    practice_calls = [['801 375', '3333', '01-09-2016 06:01:12', '186'],
-                      ['3333', '1234', '01-09-2016 06:01:59', '2093'],
-                      ['9999', '1010', '01-09-2016 06:03:51', '1975'],
-                      ['9999', '1010', '01-09-2016 06:03:51', '1975'],
-                      ['9999', '1010', '01-09-2016 06:03:51', '1975'],
-                      ['9999', '1010', '01-09-2016 06:03:51', '1975'],
-                      ['2020', '1010', '01-09-2016 06:03:51', '1975']]
+    marketers = []
+    for i in call_list:
+        if i[0] not in non_marketers:
+            marketers.append(i[0])
 
-    return create_non_marketer_list(practice_calls, practice_texts)
+    return list(sorted(set(marketers)))
 
 
-print(test_cases())
+# def test_cases():
+#     practice_texts = [['4545', '1234', '01-09-2016 06:03:22'],
+#                       ['4545', '5678', '01-09-2016 06:05:35'],
+#                       ['1234', '9999', '01-09-2016 06:05:35'],
+#                       ['1234', '9999', '01-09-2016 06:05:35'],
+#                       ['1234', '9999', '01-09-2016 06:05:35'],
+#                       ['1234', '9999', '01-09-2016 06:05:35']]
+#
+#     practice_calls = [['801 375', '3333', '01-09-2016 06:01:12', '186'],
+#                       ['3333', '1234', '01-09-2016 06:01:59', '2093'],
+#                       ['9999', '1010', '01-09-2016 06:03:51', '1975'],
+#                       ['9999', '1010', '01-09-2016 06:03:51', '1975'],
+#                       ['9999', '1010', '01-09-2016 06:03:51', '1975'],
+#                       ['9999', '1010', '01-09-2016 06:03:51', '1975'],
+#                       ['2020', '1010', '01-09-2016 06:03:51', '1975']]
+#
+#     return find_marketers(practice_calls, practice_texts)
+#
+#
+# print(test_cases())
+
+
