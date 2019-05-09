@@ -3,8 +3,6 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
-from Task1 import extract_numbers
-
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
@@ -48,6 +46,14 @@ def get_receiver_num(call_list):
     return list(set(new_list))
 
 
+# extract the first and second items of each call/text in the combined list
+def extract_numbers(numbers_list):
+    """Function that extracts the telephone numbers from a list"""
+    new_list1 = [item[0] for item in numbers_list]
+    new_list2 = [item[1] for item in numbers_list]
+    return new_list1 + new_list2
+
+
 def find_marketers(call_list, text_list):
     non_marketers = create_non_marketer_list(call_list, text_list)
 
@@ -80,4 +86,11 @@ def find_marketers(call_list, text_list):
 #
 # print(test_cases())
 
+"""Task 4 Answer:"""
 
+possible_marketers = find_marketers(calls, texts)
+
+print("These numbers could be telemarketers:")
+
+for num in possible_marketers:
+    print(num)

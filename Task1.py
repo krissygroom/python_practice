@@ -3,7 +3,6 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import numpy as np
-import time
 import csv
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -74,10 +73,8 @@ def count_unique_numbers(call_list, text_list):
 
 """Answer to Task 1:
 """
-# start = time.time()
 unique_numbers = count_unique_numbers(calls, texts)
 print("There are {} different telephone numbers in the records!".format(unique_numbers))
-# end = time.time()
-# print("Time of execution in seconds: {}".format(end - start))
+
 
 
