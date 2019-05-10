@@ -118,7 +118,8 @@ print_calls(unique_calls)
 
 """Task 3, Part B answer"""
 
-print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percent_called(calls)))
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
+      .format(percent_called(calls)))
 
 
 
