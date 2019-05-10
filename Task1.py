@@ -54,6 +54,7 @@ def count_unique_numbers(call_list, text_list):
     # convert all_numbers into numpy array
     all_numbers = np.asarray(all_numbers)
     num_unique = np.unique(all_numbers)
+
     return len(num_unique)
 
 

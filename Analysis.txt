@@ -1,0 +1,45 @@
+Analysis of Big(O) in Project files:
+
+Task 0:
+1) Each of the blocks that open the two files would be O(n) because we are parsing the file row by row to read the file.
+    so this would give us O(2n) which reduces to O(n)
+2) We then just have to look up a specific value from the list and we have the exact index then this is O(1) because
+    we do not need to search through the entire list since we know the address of exactly where the value is that
+    we're looking for.  Since we have 7 different values that we're retrieving we would have O(7)
+3) The overall complexity for Task 0 would be O(2n + 7) which is O(n)
+
+
+Task 1:
+1) Open the files and read line by line = O(2n)
+2) combine_lists() would be O(1) b/c we just insert the second list at the end of the first
+3) extract_numbers() is O(n) because we are traversing the entire list and pulling out values with each instance.
+4) count_unique_numbers() is using np.unique which I found is not very fast and is O(nlogn)
+5) So overall we have reduced we have O(nlogn)
+
+Task 2:
+1) Open the files and read line by line = O(2n)
+2) extract_call_numbers() is O(n) because we are traversing the entire list
+3) phone_durations() is O(n**2) because the first for loop traverses the entire list but then I used the 'not in'
+    call which would have to look through the list again to see if the value is or is not in the list
+4)find_max_call() is O(n)
+5) The overall complexity would be O(n**2 + n) which ultimately reduces to O(n**2)
+
+
+Task 3:
+1) Open the files and read line by line = O(2n)
+2) find_bangalore_calls_list() is O(n) because it traverses the entire list and checks each value.  Append is O(1)
+3) find_bangalore_calls_unique() for creating a set is O(n) then sorted for python is O(logn)
+4) percent_called() is O(n) for a list, sum would be O(n), and then the calculation would be O(1)
+5) print_calls() is O(n)
+6) Overall time complexity would reduce to O(n + logn) which reduces to O(n)
+
+Task 4:
+1) Open the files and read line by line = O(2n)
+2) create_non_marketer_list() creates a list and a set with both being O(n), then it uses sorted so O(logn)
+3) get_receiver_num() is O(n) to traverse the entire list
+4) extract_numbers() is O(2n)
+5) find_marketers() is O(n**2) because I used a for loop and then not in which would traverse the entire list again
+    and then it uses sorted which is O(logn)
+6) printing out all the numbers is O(n)
+7) Overall time complexity reduces to O(n**2 + n + logn) which reduces to O(n**2)
+
