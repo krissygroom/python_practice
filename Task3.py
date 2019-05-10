@@ -69,7 +69,7 @@ def find_bangalore_calls_list(call_list):
                 bangalore_calls.append('140')
             else:
                 area_code = call_list[i][1].split(' ')
-                bangalore_calls.append(area_code[0])
+                bangalore_calls.append(area_code[0][:4])
 
     return bangalore_calls
 
